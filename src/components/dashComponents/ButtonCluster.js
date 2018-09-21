@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import AddData from "./AddData";
-import AddClusters from "./AddClusters";
+import AddData from "./addData/AddData";
+import AddClusters from "./addCluster/AddClusters";
 
 class ButtonCluster extends Component {
   render() {

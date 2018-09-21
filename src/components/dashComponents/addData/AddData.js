@@ -6,6 +6,7 @@ import AddLocation from '@material-ui/icons/AddLocation';
 import LocationOff from "@material-ui/icons/LocationOff";
 
 
+
 class AddData extends Component {
   constructor(props) {
     super(props);
@@ -14,20 +15,21 @@ class AddData extends Component {
       active: false
     }
 
-    this.changeIcon = this.changeIcon.bind(this);
+    this.onClick = this.onClick.bind(this);
   }
 
 
-  changeIcon = (e) => {
+  onClick = (e) => {
     this.setState(prevState => ({
       active: !prevState.active
     }));
   }
 
+
   render() {
     return (
       <div>
-        <ListItem button divider onClick={this.changeIcon} >
+        <ListItem button divider onClick={this.onClick} >
           <ListItemIcon>
             {this.state.active ? <LocationOff /> : <AddLocation />}
           </ListItemIcon>
