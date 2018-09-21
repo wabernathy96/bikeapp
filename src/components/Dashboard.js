@@ -6,13 +6,14 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import Drawer from '@material-ui/core/Drawer';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
+import Grid from "@material-ui/core/Grid";
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
-import ButtonCluster from "./dashButtons/ButtonCluster";
-
+import ButtonCluster from "./dashComponents/ButtonCluster";
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import Map from './dashComponents/Map';
 
 
 
@@ -144,16 +145,19 @@ class Dashboard extends React.Component {
             </div>
             <Divider />
             <List><ButtonCluster /></List>
-
           </Drawer>
           <main className={classes.content}>
             <div className={classes.appBarSpacer} />
-
-            <div className={classes.tableContainer}>
-            </div>
+            <Grid>
+              <div className={classNames(classes.container, classes.alignContent = "stretch", classes.justifyContent = "flex-end")}  >
+                <div className={classNames(classes.item, classes.justify = "flex-end")} >
+                  <Map />
+                </div>
+              </div>
+            </Grid>
           </main>
         </div>
-      </React.Fragment>
+      </React.Fragment >
     );
   }
 }
