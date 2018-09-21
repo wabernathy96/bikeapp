@@ -4,15 +4,14 @@ import classNames from 'classnames';
 import { Map, TileLayer, Marker, Popup } from "react-leaflet";
 
 import "../assets/dashboard.css";
-import { mapbox } from "../../utils/keys/keys.json";
 
 
 class BikeMap extends Component {
 
   render() {
-    const position = [51.505, -0.09];
+    const position = [29.8240, -95.4602];
     return (
-      <Map id="map" center={position} zoom={13}>
+      <Map id="map" center={position} zoom={10}>
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           attribution="&copy; <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
@@ -26,3 +25,5 @@ class BikeMap extends Component {
 }
 
 export default BikeMap;
+
+// -95.9862,29.4133,9-4.9397,30.2164
