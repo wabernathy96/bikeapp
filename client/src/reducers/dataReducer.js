@@ -14,11 +14,13 @@ export default function (state = initialState, action) {
       return {
         ...state,
         dataPoints: action.payload,
+        dataActive: true
       };
     case CLEAR_DATA_POINTS:
       return {
         ...state,
-        dataPoints: action.payload
+        dataPoints: action.payload,
+        dataActive: false
       };
     default:
       return state;

@@ -13,7 +13,7 @@ import IconButton from '@material-ui/core/IconButton';
 import ButtonCluster from "./dashComponents/ButtonCluster";
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import BikeMap from './dashComponents/map/BikeMap';
+import BikeMap from './dashComponents/BikeMap';
 
 
 

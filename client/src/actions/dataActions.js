@@ -10,7 +10,7 @@ import {
 // Add data points from bikewise
 export const getDataPoints = () => dispatch => {
   axios
-    .get("https://bikewise.org:443/api/v2/locations?proximity=Houston&proximity_square=100&all=true")
+    .get("https://bikewise.org:443/api/v2/locations?proximity=Houston&proximity_square=100&limit=250")
     .then(res =>
       dispatch(
         {
