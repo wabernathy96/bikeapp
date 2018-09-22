@@ -6,7 +6,6 @@ import AddLocation from '@material-ui/icons/AddLocation';
 import LocationOff from "@material-ui/icons/LocationOff";
 
 
-
 class AddData extends Component {
   constructor(props) {
     super(props);
@@ -20,6 +19,7 @@ class AddData extends Component {
 
 
   onClick = (e) => {
+    e.preventDefault();
     this.setState(prevState => ({
       active: !prevState.active
     }));
@@ -33,7 +33,9 @@ class AddData extends Component {
           <ListItemIcon>
             {this.state.active ? <LocationOff /> : <AddLocation />}
           </ListItemIcon>
-          <ListItemText primary="Add Data" />
+          <ListItemText
+            primary={this.state.active ? "Remove Data" : "Add Data"}
+          />
         </ListItem>
       </div>
     )

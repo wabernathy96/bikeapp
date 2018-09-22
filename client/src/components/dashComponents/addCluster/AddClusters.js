@@ -18,6 +18,7 @@ class AddClusters extends Component {
 
 
   changeIcon = (e) => {
+    e.preventDefault();
     this.setState(prevState => ({
       active: !prevState.active
     }));
