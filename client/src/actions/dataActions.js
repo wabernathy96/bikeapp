@@ -2,7 +2,7 @@ import axios from "axios";
 
 import {
   GET_DATA_POINTS,
-  CLEAR_DATA,
+  CLEAR_DATA_POINTS,
   PASS_ERRORS
 } from "./types.js";
 
@@ -32,6 +32,13 @@ export const getDataPoints = () => dispatch => {
 }
 
 // Clear data points from bikewise
-
+export const clearDataPoints = res => dispatch => {
+  dispatch(
+    {
+      type: CLEAR_DATA_POINTS,
+      payload: {}
+    }
+  )
+}
 
 

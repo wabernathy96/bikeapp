@@ -31,7 +31,7 @@ class AddClusters extends Component {
           <ListItemIcon>
             {this.state.active ? <LocationOff /> : <PinDrop />}
           </ListItemIcon>
-          <ListItemText primary="Add Clusters" />
+          <ListItemText primary={this.state.active ? "Scatter Clusters" : "Cluster Data"} />
         </ListItem>
       </div>
     )

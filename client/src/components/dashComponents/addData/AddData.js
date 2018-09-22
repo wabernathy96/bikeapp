@@ -1,10 +1,12 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import PropTypes from "prop-types";
+import { connect } from "react-redux";
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import AddLocation from '@material-ui/icons/AddLocation';
 import LocationOff from "@material-ui/icons/LocationOff";
-
+import { getDataPoints, clearDataPoints } from "../../../actions/dataActions";
 
 class AddData extends Component {
   constructor(props) {
@@ -20,9 +22,17 @@ class AddData extends Component {
 
   onClick = (e) => {
     e.preventDefault();
+
+    // Change active state
     this.setState(prevState => ({
       active: !prevState.active
     }));
+
+
+    (this.state.active
+      ? this.props.clearDataPoints()
+      : this.props.getDataPoints()
+    )
   }
 
 
@@ -42,4 +52,16 @@ class AddData extends Component {
   }
 }
 
-export default AddData;
+AddData.propTypes = {
+  getDataPoints: PropTypes.func.isRequired,
+  clearDataPoints: PropTypes.func.isRequired,
+  data: PropTypes.object.isRequired
+}
+
+const mapStateToProps = state => (
+  {
+    data: state.data
+  }
+)
+
+export default connect(mapStateToProps, { getDataPoints, clearDataPoints })(AddData);

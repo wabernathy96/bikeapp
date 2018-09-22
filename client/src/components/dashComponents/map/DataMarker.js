@@ -5,7 +5,7 @@ import { getDataPoints } from "../../../actions/dataActions";
 
 class DataMarker extends Component {
   componentDidMount() {
-    this.props.getDataPoints();
+
   }
 
   render() {
@@ -18,7 +18,6 @@ class DataMarker extends Component {
 }
 
 DataMarker.propTypes = {
-  getDataPoints: PropTypes.func.isRequired,
   data: PropTypes.object.isRequired
 }
 
@@ -28,4 +27,4 @@ const mapStateToProps = state => (
   }
 )
 
-export default connect(mapStateToProps, { getDataPoints })(DataMarker);
+export default connect(mapStateToProps)(DataMarker);
