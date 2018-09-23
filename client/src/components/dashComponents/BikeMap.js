@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import PropTypes from 'prop-types';
+// import MarkerClusterGroup from "react"
+import Leaflet from "leaflet";
 import { Map, TileLayer, GeoJSON, Marker } from "react-leaflet";
 import { clusterData, unclusterData } from "../../actions/dataActions";
 
@@ -13,44 +15,44 @@ const defaultViewport = {
 
 const markers = [];
 
+// const markerStyle = Leaflet.icon({
+//   iconUrl: "../assets/point.png"
+// })
+
 class BikeMap extends Component {
   constructor() {
     super();
 
     this.state = {
-      viewport: defaultViewport,
-      mapPoint: {
-        lat: 29.8,
-        lng: -95.5
+      viewport: {
+        center: [29.8240, -95.4602],
+        zoom: 10
       }
     }
   }
 
   componentWillReceiveProps(nextprops) {
     let { dataActive, dataPoints } = nextprops.data;
-    let point = {}
+    
 
     if (dataActive === true) {
       // If the data is being pulled, split the coordinate arrays into a point object
       // Push the point object into a global "markers" array
+      // Note: Coords are reversed bc of transfer between legacy leaflet vs geoJSON
       for (let i = 0; i < dataPoints.features.length; i++) {
-        point.lat = dataPoints.features[i].geometry.coordinates[0]
-        point.lng = dataPoints.features[i].geometry.coordinates[1]
+        let point = {}
+        point.lat = dataPoints.features[i].geometry.coordinates[1];
+        point.lng = dataPoints.features[i].geometry.coordinates[0];
 
         markers.push(point)
-
-        console.log(`MARKERS FILLED: ${markers}`)
+        console.log("MARKERS FILLED")
       }
     } else if (dataActive === false) {
       // Empty the "markers" array when the dataActive prop = false
       markers.length = 0;
 
-      console.log(`MARKERS EMPTY: ${markers}`)
+      console.log(`MARKERS EMPTY`)
     }
-  }
-
-  componentDidUpdate() {
-
   }
 
   onClickReset = () => {
@@ -62,22 +64,30 @@ class BikeMap extends Component {
   }
 
   render() {
-    const { dataActive, dataPoints } = this.props.data;
+    const { dataActive } = this.props.data;
+    let markerDisplay;
 
+    if (dataActive) {
+      markerDisplay = markers.map((position, i) =>
+        <Marker position={position} key={i}  />
+      )
+    } else {
+      markerDisplay = null;
+    }
 
     return (
       <Map
         onClick={this.onClickReset}
         onViewportChanged={this.onViewportChanged}
         viewport={this.state.viewport}
-        id="map"
+        id="bikemap"
       >
         <TileLayer
           attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
         {/* {dataActive ? <GeoJSON data={dataPoints} /> : null} */}
-
+        <div className="leaflet-pane leaflet-marker-pane">{markerDisplay}</div>
       </Map>
     )
   }
