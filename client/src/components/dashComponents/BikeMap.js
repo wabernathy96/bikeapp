@@ -18,21 +18,38 @@ class BikeMap extends Component {
     super();
 
     this.state = {
-      viewport: defaultViewport
+      viewport: defaultViewport,
+      mapPoint: {
+        lat: 29.8,
+        lng: -95.5
+      }
+    }
+  }
+
+  componentWillReceiveProps(nextprops) {
+    let { dataActive, dataPoints } = nextprops.data;
+    let point = {}
+
+    if (dataActive === true) {
+      // If the data is being pulled, split the coordinate arrays into a point object
+      // Push the point object into a global "markers" array
+      for (let i = 0; i < dataPoints.features.length; i++) {
+        point.lat = dataPoints.features[i].geometry.coordinates[0]
+        point.lng = dataPoints.features[i].geometry.coordinates[1]
+
+        markers.push(point)
+
+        console.log(`MARKERS FILLED: ${markers}`)
+      }
+    } else if (dataActive === false) {
+      // Empty the "markers" array when the dataActive prop = false
+      markers.length = 0;
+
+      console.log(`MARKERS EMPTY: ${markers}`)
     }
   }
 
   componentDidUpdate() {
-    let { dataActive, dataPoints } = this.props.data;
-
-    if (dataActive === true) {
-      dataPoints.features.forEach(el =>
-        markers.push(el.geometry.coordinates)
-      );
-
-    } else {
-      markers.length = 0;
-    }
 
   }
 
@@ -47,6 +64,7 @@ class BikeMap extends Component {
   render() {
     const { dataActive, dataPoints } = this.props.data;
 
+
     return (
       <Map
         onClick={this.onClickReset}
@@ -58,7 +76,8 @@ class BikeMap extends Component {
           attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        {dataActive ? <GeoJSON data={dataPoints} /> : null}
+        {/* {dataActive ? <GeoJSON data={dataPoints} /> : null} */}
+
       </Map>
     )
   }
