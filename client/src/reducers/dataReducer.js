@@ -1,11 +1,14 @@
 import {
   GET_DATA_POINTS,
   CLEAR_DATA_POINTS,
-  PASS_ERRORS
+  CLUSTER_DATA,
+  UNCLUSTER_DATA
 } from "../actions/types";
 
 const initialState = {
-  dataPoints: {}
+  dataPoints: {},
+  dataActive: false,
+  clusterData: false
 }
 
 export default function (state = initialState, action) {
@@ -22,6 +25,16 @@ export default function (state = initialState, action) {
         dataPoints: action.payload,
         dataActive: false
       };
+    case CLUSTER_DATA:
+      return {
+        ...state,
+        clusterData: true
+      }
+    case UNCLUSTER_DATA:
+      return {
+        ...state,
+        clusterData: false
+      }
     default:
       return state;
   }

@@ -10,12 +10,11 @@ import Grid from "@material-ui/core/Grid";
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
-import ButtonCluster from "./dashComponents/ButtonCluster";
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import BikeMap from './dashComponents/BikeMap';
-
-
+import AddData from "./dashComponents/AddData";
+import AddClusters from "./dashComponents/AddClusters";
 
 const drawerWidth = 240;
 
@@ -144,7 +143,11 @@ class Dashboard extends React.Component {
               </IconButton>
             </div>
             <Divider />
-            <List><ButtonCluster /></List>
+            <List>
+              <AddData />
+              <br />
+              <AddClusters />
+            </List>
           </Drawer>
           <main className={classes.content}>
             <div className={classes.appBarSpacer} />

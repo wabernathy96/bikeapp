@@ -6,7 +6,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import AddLocation from '@material-ui/icons/AddLocation';
 import LocationOff from "@material-ui/icons/LocationOff";
-import { getDataPoints, clearDataPoints } from "../../../actions/dataActions";
+import { getDataPoints, clearDataPoints } from "../../actions/dataActions";
 
 class AddData extends Component {
   constructor(props) {

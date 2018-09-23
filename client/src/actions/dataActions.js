@@ -3,7 +3,8 @@ import axios from "axios";
 import {
   GET_DATA_POINTS,
   CLEAR_DATA_POINTS,
-  PASS_ERRORS
+  CLUSTER_DATA,
+  UNCLUSTER_DATA
 } from "./types.js";
 
 
@@ -19,20 +20,13 @@ export const getDataPoints = () => dispatch => {
         }
       )
     )
-    .catch(err =>
-      dispatch(
-        {
-          type: PASS_ERRORS,
-          payload: {
-            dataPointsError: "An error occured while retrieving data points from Bikewise API endpoint"
-          }
-        }
-      )
+    .catch(res =>
+      res.status(400).json({ error: "An error occured while retrieving data points from Bikewise API endpoint" })
     )
 }
 
 // Clear data points from bikewise
-export const clearDataPoints = res => dispatch => {
+export const clearDataPoints = () => dispatch => {
   dispatch(
     {
       type: CLEAR_DATA_POINTS,
@@ -41,4 +35,20 @@ export const clearDataPoints = res => dispatch => {
   )
 }
 
+// Cluster Data
+export const clusterData = () => dispatch => {
+  dispatch(
+    {
+      type: CLUSTER_DATA
+    }
+  )
+}
 
+// Uncluster Data
+export const unclusterData = () => dispatch => {
+  dispatch(
+    {
+      type: UNCLUSTER_DATA
+    }
+  )
+}

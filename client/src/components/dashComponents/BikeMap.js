@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import PropTypes from 'prop-types';
-import classNames from 'classnames';
 import { Map, TileLayer, GeoJSON } from "react-leaflet";
-
 
 
 import "../assets/dashboard.css";
@@ -24,7 +22,7 @@ class BikeMap extends Component {
 
   getStyle(feature, layer) {
     return {
-      color: '#006400',
+      color: '#8d5cbd',
       weight: 5,
       opacity: 0.65
     }
@@ -52,7 +50,7 @@ class BikeMap extends Component {
           attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        {dataActive ? <GeoJSON data={dataPoints} style={this.getStyle} /> : null}
+        {dataActive ? <GeoJSON data={dataPoints} style={this.getStyle()} /> : null}
       </Map>
     )
   }
