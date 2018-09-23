@@ -6,6 +6,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import SwapVerticalCircle from "@material-ui/icons/SwapVerticalCircle";
 import SwapHorizontalCircle from "@material-ui/icons/SwapHorizontalCircle";
+import { clusterData, unclusterData } from "../../actions/dataActions";
 
 class AddClusters extends Component {
   constructor(props) {
@@ -15,11 +16,10 @@ class AddClusters extends Component {
       active: false
     }
 
-    this.changeIcon = this.changeIcon.bind(this);
+    this.onClick = this.onClick.bind(this);
   }
 
-
-  changeIcon = (e) => {
+  onClick = (e) => {
     e.preventDefault();
     this.setState(prevState => ({
       active: !prevState.active
@@ -30,7 +30,11 @@ class AddClusters extends Component {
     const { dataActive } = this.props.data;
     return (
       <div>
-        <ListItem disabled={dataActive ? false : true} button divider onClick={this.changeIcon}>
+        <ListItem
+          disabled={dataActive ? false : true}
+          button divider
+          onClick={this.onClick}
+        >
           <ListItemIcon>
             {this.state.active ? <SwapHorizontalCircle /> : <SwapVerticalCircle />}
           </ListItemIcon>

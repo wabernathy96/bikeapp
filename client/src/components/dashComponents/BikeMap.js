@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import PropTypes from 'prop-types';
-import { Map, TileLayer, GeoJSON } from "react-leaflet";
-
+import { Map, TileLayer, GeoJSON, Marker } from "react-leaflet";
+import { clusterData, unclusterData } from "../../actions/dataActions";
 
 import "../assets/dashboard.css";
 
@@ -11,21 +11,29 @@ const defaultViewport = {
   zoom: 10
 }
 
+const markers = [];
+
 class BikeMap extends Component {
   constructor() {
     super();
 
     this.state = {
-      viewport: defaultViewport,
+      viewport: defaultViewport
     }
   }
 
-  getStyle(feature, layer) {
-    return {
-      color: '#8d5cbd',
-      weight: 5,
-      opacity: 0.65
+  componentDidUpdate() {
+    let { dataActive, dataPoints } = this.props.data;
+
+    if (dataActive === true) {
+      dataPoints.features.forEach(el =>
+        markers.push(el.geometry.coordinates)
+      );
+
+    } else {
+      markers.length = 0;
     }
+
   }
 
   onClickReset = () => {
@@ -50,7 +58,7 @@ class BikeMap extends Component {
           attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        {dataActive ? <GeoJSON data={dataPoints} style={this.getStyle()} /> : null}
+        {dataActive ? <GeoJSON data={dataPoints} /> : null}
       </Map>
     )
   }
