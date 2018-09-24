@@ -18,4 +18,4 @@ For more information visit: https://docs.google.com/document/d/13JHg9Jtga13KDZeW
     ```
     
 ### Technology Used
-- React, Redux, Express, React-Leaflet, Redux-Thunk, Axios, Bikewise API, Openmap API
+- React, Redux, React-Leaflet, Express, Axios, Bikewise API, Openmap API
