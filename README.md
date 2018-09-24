@@ -5,11 +5,17 @@ For more information visit: https://docs.google.com/document/d/13JHg9Jtga13KDZeW
 
 ### Getting Started
 1) Clone repository
-    - : git clone git@github.com:wabernathy96/bikeapp.git
+    ```
+    : git clone git@github.com:wabernathy96/bikeapp.git
+    ```
 2) Install Dependencies
-    - : npm i; cd client; npm i; cd ..
+    ```
+    : npm i; cd client; npm i; cd ..
+    ```
 3) Start from root
-    - : npm run dev
+    ```
+    : npm run dev
+    ```
     
 ### Technology Used
-- : React, Redux, Express, React-Leaflet, Redux-Thunk, Axios, Bikewise API, Openmap API
+- React, Redux, Express, React-Leaflet, Redux-Thunk, Axios, Bikewise API, Openmap API
