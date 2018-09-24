@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import PropTypes from 'prop-types';
-import Leaflet from "leaflet";
-import { Map, TileLayer, GeoJSON, Marker } from "react-leaflet";
-import { clusterData, unclusterData } from "../../actions/dataActions";
+import { Map, TileLayer, Marker } from "react-leaflet";
+// import { clusterData, unclusterData } from "../../actions/dataActions";
 
 import "../assets/dashboard.css";
 
@@ -79,6 +78,7 @@ class BikeMap extends Component {
           attribution="&amp;copy <a href=&quot;http://osm.org/copyright&quot;>OpenStreetMap</a> contributors"
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
+        {/* The below line is to render geoJSON instead of markers, make sure to import the component from react-leaflet */}
         {/* {dataActive ? <GeoJSON data={dataPoints} /> : null} */}
         <div className="leaflet-pane leaflet-marker-pane">
           {markerDisplay}

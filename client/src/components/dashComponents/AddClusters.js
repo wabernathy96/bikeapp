@@ -6,7 +6,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import SwapVerticalCircle from "@material-ui/icons/SwapVerticalCircle";
 import SwapHorizontalCircle from "@material-ui/icons/SwapHorizontalCircle";
-import { clusterData, unclusterData } from "../../actions/dataActions";
+// import { clusterData, unclusterData } from "../../actions/dataActions";
 
 class AddClusters extends Component {
   constructor(props) {
