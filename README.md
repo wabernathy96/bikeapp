@@ -1,5 +1,5 @@
 # bikeapp
-A data aggregation application that utilizes BikeWise API in order to display information about bike incidents.
+A data aggregation application built to share information about biking incidents.
 
 For more information visit: https://docs.google.com/document/d/13JHg9Jtga13KDZeWVld3BsSGzL5PSlhgM5lWClpwiyk/edit?usp=sharing
 
