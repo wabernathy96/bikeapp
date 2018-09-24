@@ -31,7 +31,7 @@ class BikeMap extends Component {
     if (dataActive === true) {
       // If the data is being pulled, split the coordinate arrays into a point object
       // Push the point object into a global "markers" array
-      // Note: Coords are reversed bc of transfer between legacy leaflet vs geoJSON
+      // Note: Coords are reversed bc of transfer between legacy leaflet/google maps (lat,lng) vs geoJSON (lng,lat)
       for (let i = 0; i < dataPoints.features.length; i++) {
         let point = {}
         point.lat = dataPoints.features[i].geometry.coordinates[1];
