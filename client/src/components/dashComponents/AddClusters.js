@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
+import React, { Component } from "react"
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
+import ListItem from "@material-ui/core/ListItem";
+import ListItemIcon from "@material-ui/core/ListItemIcon";
+import ListItemText from "@material-ui/core/ListItemText";
 import SwapVerticalCircle from "@material-ui/icons/SwapVerticalCircle";
 import SwapHorizontalCircle from "@material-ui/icons/SwapHorizontalCircle";
 // import { clusterData, unclusterData } from "../../actions/dataActions";

@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import { connect } from "react-redux";
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
 import { Map, TileLayer, Marker } from "react-leaflet";
 // import { clusterData, unclusterData } from "../../actions/dataActions";
 
